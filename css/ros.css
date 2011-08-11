@@ -1,0 +1,175 @@
+BODY { 
+	background:#000; 
+	margin:0; 
+	padding:0; 
+	/* Cross Browser (IE jako katalog startowy bierze katalog kursora a nie stylow :P dlatego trzeba mu podac sciezke bezwzgledna) */
+	cursor: url('../gfx/cursor_gauntlet.gif'),default;
+	/*
+	cursor: url('../gfx/cursor_gauntlet.gif'),auto;
+	cursor: url('../gfx/cursor_gauntlet.cur');
+	*/
+	overflow:hidden; 
+}
+
+
+.containerField {
+	position: absolute;
+	width: 48px;
+	height: 48px;				
+	z-index: 90;
+	left: -100px;
+	top: -100px;	
+	background: url('../gfx/field.png') no-repeat;
+}
+.containerField:hover {	
+	background: url('../gfx/fieldlight.png') no-repeat;
+}
+
+
+/* Ustawienie DIV'a przechowującego UL */
+.menu { height:auto; position:relative;	width:150px;  }
+
+/* Usuwam domyślne ustawienia na wszystkich listach */
+.menu ul { padding:0; margin:0; list-style-type:none; }	
+
+/* począwszy od drugiego poziomu ukrywamy listy i nadajemy im pozycje absolutną oraz górną ramke */
+.menu ul ul { visibility:hidden; position:absolute; height:0;}
+	
+/* DLA WSZYSTKICH LI : ustawiam float aby układały sie poziomo oraz relatywnie aby kontrolować pozycje podlist */
+.menu li { float:left; position:relative; }
+
+/* USTAWIENIA GLOBALNE WSZYSTKICH LINKÓW W MENU */
+.menu a { display:block; }
+
+.menuover  { 
+	color:#f00; 
+	background:#c1915d; 
+}	
+.menuout  { 
+	color:#222; 
+	background:#dcbb85; 
+}	
+
+/* =================================================================================== */
+/* PIERWSZY POZIOM */	
+	/* LISTA */
+	.menu ul li { width:150px; }
+	
+	/* LINKI */	
+	.menu ul li a:link, 
+	.menu ul li a:visited { 
+		font-size:11px; font-family: 'Comic Sans MS'; text-decoration:none; color:#222; background:#dcbb85; 
+		height:auto; line-height:20px; 
+		width:145px; padding-left:5px;
+		border:1px solid #815a3b; border-width:1px;
+		margin-top:1px;
+		border-radius:10px;
+
+	}	
+	.menu ul li a:hover {
+		background:#eeeeee; 
+	} 
+
+	
+/* =================================================================================== */	
+/* lista drugiego poziomu ma szerokosc 150 natomiast przesunięcie list trzeciego poziomu wynosi 149 dzięki temu ramki brzegowe nachodzą się i wygląda jak jedna ramka */
+/* DRUGI POZIOM */		
+	/* LISTY */
+	.menu ul ul { top:0; left:151px; width:150px; }
+	
+	.menu ul ul li {	width:150px; }
+	
+	/* LINKI */	
+	.menu ul ul a, 
+	.menu ul ul a:visited {
+		font-size:11px; font-family: 'Comic Sans MS'; text-decoration:none; color:#222; background:#dcbb85;		
+		height:auto; line-height:1em; width:63px;		
+		padding:5px 10px 5px 5px;/* width(133) + padding(5+10=15) = 148 + border = 150px */
+		border:1px solid #815a3b; border-width:0 1px 1px 1px;		
+	}
+	
+	/* po najechaniu */		
+	.menu ul ul :hover > a { color:#000; background:#c1915d; }
+
+	
+/* =================================================================================== */	
+/* TRZECI POZIOM */
+	/* LISTY */
+	.menu ul ul ul { left:149px; top:-1px; width:149px; }
+	.menu ul ul ul.left { left:-149px; } /* otwierane w lewo */
+	
+	.menu ul ul ul li { width:149px; }
+	
+	/* LINKI */	
+	.menu ul ul ul a, .menu ul ul ul a:visited {
+		font-size:11px; text-decoration:none; color:#000; background:#d4d8bd;	
+		height:auto; line-height:1em; width:133px;		
+		padding:5px 10px 5px 5px;
+		border:1px solid #000; border-width:0 1px 1px 1px;			
+	}
+	
+	* html .menu ul ul ul a, * html .menu ul ul ul a:visited { width:150px; w\idth:133px; } /* poprawka boxmodelu w ie55 */
+	
+	/* po najechaniu */
+	.menu ul ul ul a:hover { color:#fff; background:#949e7c; }
+	.menu ul ul ul :hover > a { color:#fff; background:#949e7c; }
+	
+	/* .DROP - link trzeciego poziomu posiadający podliste */
+	.menu ul ul ul a.drop, .menu ul ul ul a.drop:visited { background:#d4d8bd url(drop.gif) bottom right no-repeat; }
+	
+	/* .DROP - po najechaniu */
+	.menu ul ul ul a.drop:hover { background:#c9ba65 url(drop.gif) bottom right no-repeat; } /* dla ie6 */
+	.menu ul ul ul :hover > a.drop { background:#c9ba65 url(drop.gif) bottom right no-repeat; }
+
+	
+/* =================================================================================== */
+/* CZWARTY POZIOM */
+	/* LISTY */
+	.menu ul ul ul ul { left:149px; top:-1px; width:149px; }
+	.menu ul ul ul ul.left { left:-149px; } /* otwierane w lewo */
+	
+	.menu ul ul ul ul li { width:149px; }
+		
+	/* LINKI */	
+	.menu ul ul ul ul a, .menu ul ul ul ul a:visited {
+		font-size:11px; text-decoration:none; color:#000; background:#d4d8bd;		
+		height:auto; line-height:1em; width:133px;		
+		padding:5px 10px 5px 5px;		
+		border:1px solid #000; border-width:0 1px 1px 1px;			
+	}
+	
+	* html .menu ul ul ul ul a, * html .menu ul ul ul ul a:visited { width:150px; w\idth:133px; } /* poprawka boxmodelu w ie55 */
+	
+	/* po najechaniu */
+	.menu ul ul ul ul a:hover { color:#fff; background:#949e7c; } /* dla ie6 */
+	.menu ul ul ul ul :hover > a { color:#fff; background:#949e7c; }
+	
+	/* .DROP - link trzeciego poziomu posiadający podliste */
+	.menu ul ul ul ul a.drop, .menu ul ul ul ul a.drop:visited { background:#d4d8bd url(drop.gif) bottom right no-repeat; }
+	
+	/* po najechaniu */
+	.menu ul ul ul ul a.drop:hover { background:#c9ba65 url(drop.gif) bottom right no-repeat; } /* dla ie6 */
+	.menu ul ul ul ul :hover > a.drop { background:#c9ba65 url(drop.gif) bottom right no-repeat; }
+
+	
+/* =================================================================================== */
+/* style the table so that it takes no part in the layout - required for IE to work */
+	.menu table { position:absolute; top:0; left:0; border-collapse:collapse; }
+
+	
+	
+/* pokaż drugi poziom gdy najade na pierwszy */
+	.menu ul li:hover ul,
+	.menu ul a:hover ul { visibility:visible; }
+/* pokaż trzeci poziom gdy najade na drugi */
+	.menu ul :hover ul :hover ul { visibility:visible; }
+/* pokaz czwarty poziom gdy najade na trzeci */
+	.menu ul :hover ul :hover ul :hover ul { visibility:visible; }
+	
+
+	
+/* ukryj trzeci poziom gdy najade na pierwszy */
+	.menu ul :hover ul ul { visibility:hidden; }
+/* ukryj czwarty poziom gdy najade na drugi */
+	.menu ul :hover ul :hover ul ul { visibility:hidden; }
+	
