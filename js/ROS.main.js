@@ -14,8 +14,8 @@
 
 // Zbiór zmiennych podstawowych
 ROS.base = {
-	gameVersion: '0.411',
-	gameVersionDate: '2011-08-07',
+	gameVersion: '0.412',
+	gameVersionDate: '2011-08-11',
     tileWidth: 48,
     tileHeight: 48,
     gameSize: [50,50],   // rozmiar obszaru calej mapy 0-49 / 0-49
