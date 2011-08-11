@@ -1,2 +1,18 @@
-My first browser-base dungeon-crawl game. Hope you enjoy it :)
-Run under Firefox and Chrome.
+Copyright (C) 2011 Marcin Danysz (skrzynkapanamarcina@gmail.com)    
+
+Kraina Cieni, JavaScript Browser-based dungeon-crawl game
+
+@version 0.411
+@license GNU General Public License, http://www.gnu.org/licenses/
+@author  Marcin Danysz
+@created 2009-05-24
+@updated 2011-08-11
+@link    http://www.krainacieni.pl
+
+This is my first/only browser-base dungeon-crawl game. Hope you enjoy it :)
+
+Game is not finished !
+
+It should run well under latest Mozilla Firefox and/or Google Chrome browser.
+
+Try it! :)
