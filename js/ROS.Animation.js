@@ -1,3 +1,17 @@
+/**
+ *  Copyright (C) 2011 Marcin Danysz (skrzynkapanamarcina@gmail.com)    
+ *
+ *  @Kraina Cieni is Browser-Based Dungeon-Crawl game
+ *  @Link: http://www.krainacieni.pl
+ *
+ *  This file is part of Kraina Cieni.
+ *
+ *  Kraina Cieni is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+ *  Kraina Cieni is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License along with Kraina Cieni. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 // Klasa tworząca oraz zarządzająca obiektami animowanymi
 ROS.Animation = (function(){
     
