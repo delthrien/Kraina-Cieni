@@ -1,4 +1,4 @@
-/**
+/*!
  *  Copyright (C) 2011 Marcin Danysz (skrzynkapanamarcina@gmail.com)    
  *
  *  @Kraina Cieni is Browser-Based Dungeon-Crawl game

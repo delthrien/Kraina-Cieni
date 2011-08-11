@@ -1,4 +1,4 @@
-/**
+/*!
  *	Copyright (C) 2011 Marcin Danysz (skrzynkapanamarcina@gmail.com)    
  *
  *	@Kraina Cieni is Browser-Based Dungeon-Crawl game
@@ -854,15 +854,27 @@ ROS.load = function() {
 			ROS.map.center(ROS.base.activePlayer.tilex,ROS.base.activePlayer.tiley);
 		}
 		ROS.infoScroll.refresh();		
-	}
-
-
-	// Obszar podziemia
-		ROS.map.create();
+	}	
 	
 	// Paletka informacyjna
 		ROS.infoScroll.create();
 		ROS.microScroll.create();
+	
+	// Paletki stworzone, wywołuje okno powitalne
+		var welcome = '<img src="gfx/logo.png"><br />'+
+		'ver. '+ROS.base.gameVersion+' ('+ROS.base.gameVersionDate+')'+
+		'<p style="text-align:left; font-size:14px;">Zanim zaczniesz grę mam dla Ciebie kilka cennych uwag:<br />'+
+		'- gra nie jest jeszcze ukończona (więc jest mało przedmiotów i wrogów)<br />'+
+		'- przeładowanie strony powoduje wygenerowanie nowych niepowtarzalnych podziemi<br />'+
+		'- ture kończysz klikając w ikone klepsydry w dolnym prawym rogu ekranu<br />'+
+		'- używaj obu przycisków myszy, aby odkryć wszystkie opcje<br />'+
+		'- jeśli gra działa powoli zmniejsz rozmiar okna przeglądarki<br />'+
+		'- jeśli masz jakieś uwagi lub pytania zapraszam na strone www.krainacieni.pl<br /><br />'+
+		'To chyba tyle na początek, miłej zabawy :)';
+		ROS.infoScroll.show(welcome,600,0.5,function() { ROS.base.phaseNext(1); });
+
+	// Obszar podziemia
+		ROS.map.create();
 
 	// Guziki akcji
 		ROS.hud.create();
@@ -915,6 +927,6 @@ ROS.load = function() {
 	document.onkeydown = ROS.keyboard.down;
 	document.onkeyup   = ROS.keyboard.up;
 
-	ROS.base.phaseNext(1); // Startuje pierwszą faze gry
+	// ROS.base.phaseNext(1); // Startuje pierwszą faze gry
 
 }

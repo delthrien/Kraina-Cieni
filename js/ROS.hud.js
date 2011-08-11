@@ -1,4 +1,4 @@
-/**
+/*!
  *	Copyright (C) 2011 Marcin Danysz (skrzynkapanamarcina@gmail.com)    
  *
  *	@Kraina Cieni is Browser-Based Dungeon-Crawl game
@@ -188,7 +188,7 @@ ROS.hud = (function() {
 			g.height = 40+'px';
 			ROS.hud.area.appendChild(ROS.hud.g22);			
 			ROS.tools.addEvent(ROS.hud.g22,'mousedown',function() {
-				ROS.infoScroll.show('Kraina Cieni<br><br>v. '+ROS.base.gameVersion+' ('+ROS.base.gameVersionDate+')<br>by Marcin Danysz',null,1);
+				ROS.infoScroll.show('<img src="gfx/logo.png"><br />v. '+ROS.base.gameVersion+' ('+ROS.base.gameVersionDate+')<br>by Marcin Danysz',350,0.6);
 			});
 			ROS.tools.addEvent(ROS.hud.g22,'mouseover',function() {
 				ROS.fly.show('O grze',1,80);

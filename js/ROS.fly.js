@@ -1,4 +1,4 @@
-/**
+/*!
  *	Copyright (C) 2011 Marcin Danysz (skrzynkapanamarcina@gmail.com)    
  *
  *	@Kraina Cieni is Browser-Based Dungeon-Crawl game
@@ -315,11 +315,14 @@ ROS.flyBag = (function() {
 // Skrol informacyjny, zawierający treść, pojawia się centralnie
 ROS.infoScroll = (function() {
 	
+	var hidetimer = null;
+
 	return {
 		area: null,
 		innerArea: null,
 		active: false,
 		veil: null,
+		onHidden: null,
 
 		create: function() {
 			if (ROS.infoScroll.area == null) {
@@ -339,6 +342,7 @@ ROS.infoScroll = (function() {
 				i.webkitBoxShadow = '0 0 28px #000000';
 				i.boxShadow = '0 0 28px #000000';
 				i.display = 'none';
+				i.opacity = 1;
 				document.body.appendChild(ROS.infoScroll.area);	
 				ROS.tools.addEvent(ROS.infoScroll.area,'click',ROS.infoScroll.hide);
 
@@ -380,7 +384,9 @@ ROS.infoScroll = (function() {
 			ROS.infoScroll.veil.style.height = ROS.base.wSize[1]+'px';
 		},
 		
-		show: function(txt,width,veil) {			
+		show: function(txt,width,veil,onHidden) {			
+			clearTimeout(hidetimer);
+
 			ROS.infoScroll.area.style.width = (width || 250) + 'px';									
 			
 			ROS.tools.clearNodes(ROS.infoScroll.innerArea);
@@ -388,20 +394,49 @@ ROS.infoScroll = (function() {
 
 			//ROS.tools.console('log',ROS.infoScroll.area.offsetHeight+'px');
 
-			if (veil === 1) {
-				ROS.infoScroll.veil.style.display = 'block';	
+			if (veil) {
+				ROS.infoScroll.veil.style.opacity = veil;	
+				ROS.infoScroll.veil.style.display = 'block';
+			} else {
+				ROS.infoScroll.veil.style.opacity = 0.1; // ustawia na default
+				ROS.infoScroll.veil.style.display = 'none';
 			}
 
 			ROS.infoScroll.area.style.display = 'block';
 			ROS.infoScroll.active = true;
 
 			ROS.infoScroll.refresh();
+
+			if (onHidden) {
+				ROS.infoScroll.onHidden = onHidden;
+			}
 		},
 
 		hide: function() {
-			ROS.infoScroll.veil.style.display = 'none';	
-			ROS.infoScroll.area.style.display = 'none';
-			ROS.infoScroll.active = false;
+			ROS.infoScroll.veil.style.display = 'none';
+			ROS.infoScroll.veil.style.opacity = 0.1; // ustawia na default
+			ROS.infoScroll.hidden();	
+		},
+
+		hidden: function() {
+			var a = parseFloat(ROS.infoScroll.area.style.opacity).toFixed(2);			
+			var an = (a - 0.08).toFixed(2);
+			
+			if (an < 0) {
+				if (ROS.infoScroll.onHidden) {
+					(ROS.infoScroll.onHidden)();
+					ROS.infoScroll.onHidden = null;
+				}
+				ROS.infoScroll.area.style.display = 'none';
+				ROS.infoScroll.area.style.opacity = 1; // ustawia na default
+				clearTimeout(hidetimer);
+				ROS.infoScroll.active = false;				
+				return;
+			} else {
+				ROS.infoScroll.area.style.opacity = an;
+			}
+
+			hidetimer = setTimeout(ROS.infoScroll.hidden,10);
 		}
 
 	};
